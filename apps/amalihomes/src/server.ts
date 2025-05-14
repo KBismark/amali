@@ -11,23 +11,12 @@ const browserDistFolder = environment.PRODUCTION
 
 const app = express();
 
-console.log('\n\n---------------- PUBLIC DIRECTORY --------------');
-
-console.log(browserDistFolder);
-
-console.log('\n\n');
-
-// if (!browserDistFolder.includes('dist')) {
 // Handle static files
 app.use(express.static(browserDistFolder));
 
 if (!environment.PRODUCTION) {
-  console.log('\n\n');
-
-  console.log('----------- NOT PRODUCTION --------');
-  console.log('\n\n');
-
   const devBlockingRequests = ['/null'];
+
   app.get(devBlockingRequests, (req, res) => res.status(404).end(`404 Not Found`));
 }
 
@@ -40,15 +29,14 @@ app.use((err: any, req: any, res: any, next: any) => {
 });
 
 // Start the server if this module is the main entry point.
-
 if (isMainModule(import.meta.url)) {
-  const port = 3000;
+  const port = environment.SERVER_PORT ?? 3000;
 
   app.listen(port, () => {
     console.log(`Node Express server listening on http://localhost:${port}`);
   });
 }
-// }
+
 // Handler used by the Angular CLI (for dev-server and during build) or Firebase Cloud Functions.
 // NOTE: DO NOT CHANGE VARIABLE NAME `reqHandler`
 export const reqHandler = createNodeRequestHandler(app);
