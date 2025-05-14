@@ -1,0 +1,26 @@
+<div class="flex flex-col gap-6 p-7 bg-white rounded-md shadow-md text-sm md:text-base">
+  <span class="flex gap-4 items-center">
+    <img
+      [src]="curLocaleSalesRep()?.profilePic?.[0]?.image"
+      alt="Sales Representative"
+      class="w-14 h-14 rounded-full object-cover"
+    />
+    <span class="flex flex-col gap-1">
+      <h4 libText textType="heading5">{{ curLocaleSalesRep()?.name }}</h4>
+      <p>Country rep</p>
+    </span>
+  </span>
+  <a href="tel:{{ curLocaleSalesRep()?.phoneNumber }}" target="_blank">
+    <span class="flex gap-4 items-center">
+      <app-phone-icon></app-phone-icon>
+      <p>{{ curLocaleSalesRep()?.phoneNumber }}</p>
+    </span>
+  </a>
+
+  <a href="mailto:{{ curLocaleSalesRep()?.email }}" target="_blank">
+    <span class="flex gap-4 items-center">
+      <app-mail-icon></app-mail-icon>
+      <p>{{ curLocaleSalesRep()?.email }}</p>
+    </span>
+  </a>
+</div>
