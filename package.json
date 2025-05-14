@@ -8,7 +8,7 @@
     "build": "npm run build-env && npx nx build amalihomes",
     "build-env": "npx envnext -o apps/amalihomes/src/app/environments -e ts",
     "build-env-dev": "npx envnext -p .env -o apps/amalihomes/src/app/environments -e ts -w",
-    "build:ssr": "npx nx build amalihomes --configuration production",
+    "build:ssr": "npm run build-env && npx nx build amalihomes --configuration production",
     "postbuild:ssr": "chmod +x ./postbuild.sh && ./postbuild.sh",
     "lint": "npx nx lint amalihomes",
     "test": "npx jest",
