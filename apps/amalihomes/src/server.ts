@@ -30,7 +30,7 @@ app.use((err: any, req: any, res: any, next: any) => {
 
 // Start the server if this module is the main entry point.
 if (isMainModule(import.meta.url)) {
-  const port = environment.SERVER_PORT ?? 3000;
+  const port = 3000;
 
   app.listen(port, () => {
     console.log(`Node Express server listening on http://localhost:${port}`);
